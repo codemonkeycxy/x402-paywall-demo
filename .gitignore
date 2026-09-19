@@ -1,5 +1,6 @@
 node_modules/
 .wrangler/
+.tool-versions
 .dev.vars
 .env
 .env.*
