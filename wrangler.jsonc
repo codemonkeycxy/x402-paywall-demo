@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "x402-paywall-demo",
+  "main": "src/index.ts",
+  "workers_dev": true,
+  "compatibility_date": "2026-09-19",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "NETWORK": "eip155:84532",
+    "PRICE_USDC": "$0.0001",
+    "SELLER_ADDRESS": "0x465a69F246C1d71F82870F814DEeaB4059084594",
+    "FACILITATOR_URL": "https://x402.org/facilitator",
+    "DEMO_MODE": "true"
+  }
+  // Add the D1 binding after creating the database in the Cloudflare account:
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "x402-paywall-events",
+  //     "database_id": "<cloudflare-d1-database-id>",
+  //     "migrations_dir": "migrations"
+  //   }
+  // ]
+}
