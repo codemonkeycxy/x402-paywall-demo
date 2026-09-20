@@ -75,6 +75,10 @@ export function renderDashboard(): string {
       .pass-kicker { color: #79c0ff; font-size: 12px; font-weight: 800; letter-spacing: .16em; }
       .pass-title { margin-top: 8px; font-size: clamp(26px, 5vw, 42px); }
       .pass-message { max-width: 560px; color: #c9d1d9; font-size: 17px; }
+      .animal-reward { display: flex; align-items: center; gap: 18px; margin-top: 20px; border: 1px solid rgba(88, 166, 255, .32); border-radius: 14px; background: rgba(13, 17, 23, .38); padding: 12px 16px 12px 12px; }
+      .animal-art { width: 168px; height: 112px; flex: 0 0 auto; }
+      .animal-copy strong { display: block; color: #f0f6fc; font-size: 16px; }
+      .animal-copy span { display: block; margin-top: 5px; color: #8b949e; font-size: 13px; line-height: 1.4; }
       .pass-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 20px; }
       .pass-meta .card { background: rgba(13, 17, 23, .42); }
       .confetti { position: fixed; z-index: 20; top: -16px; left: 50%; width: 9px; height: 14px; background: var(--color); pointer-events: none; animation: fall 950ms ease-out forwards; }
@@ -86,6 +90,7 @@ export function renderDashboard(): string {
         main { width: min(100% - 20px, 960px); padding-top: 28px; }
         .panel, .flow { padding: 16px; }
         .seller-card { grid-column: auto; }
+        .animal-reward { align-items: flex-start; flex-direction: column; }
         .flow-actors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .flow-track { grid-template-columns: 1fr; }
         .flow-message { grid-column: auto; width: auto; }
@@ -126,6 +131,29 @@ export function renderDashboard(): string {
           <div class="pass-kicker">ACCESS GRANTED</div>
           <h2 id="pass-title" class="pass-title">Agent Access Pass</h2>
           <p id="pass-message" class="pass-message"></p>
+          <div class="animal-reward">
+            <svg class="animal-art" viewBox="0 0 240 160" role="img" aria-label="A cute cat celebrating the payment" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="animal-bg" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#243b76" />
+                  <stop offset="1" stop-color="#172554" />
+                </linearGradient>
+              </defs>
+              <rect width="240" height="160" rx="16" fill="url(#animal-bg)" />
+              <circle cx="204" cy="31" r="18" fill="#f8d477" opacity=".9" />
+              <path d="M48 64 42 25l35 23M164 48l35-23-6 39" fill="#f0a36b" stroke="#f8c08b" stroke-linejoin="round" stroke-width="6" />
+              <path d="M61 57c0-24 20-39 48-39s48 15 48 39v37c0 28-21 45-48 45S61 122 61 94Z" fill="#f0a36b" stroke="#f8c08b" stroke-width="6" />
+              <path d="M73 69c7-8 16-8 23-1M121 68c7-7 16-7 23 1" fill="none" stroke="#172033" stroke-linecap="round" stroke-width="6" />
+              <circle cx="91" cy="79" r="5" fill="#172033" />
+              <circle cx="139" cy="79" r="5" fill="#172033" />
+              <path d="M113 87c-7 0-10 5 0 10 10-5 7-10 0-10Z" fill="#bd5263" />
+              <path d="M113 97c-3 10-13 12-19 5M113 97c3 10 13 12 19 5" fill="none" stroke="#172033" stroke-linecap="round" stroke-width="4" />
+              <path d="M70 92 39 87M70 101 36 105M156 92l31-5M156 101l34 4" fill="none" stroke="#f8c08b" stroke-linecap="round" stroke-width="3" />
+              <path d="M47 133c8-22 24-28 35-14 9 12 9 25-2 30H47ZM179 133c-8-22-24-28-35-14-9 12-9 25 2 30h33Z" fill="#f0a36b" stroke="#f8c08b" stroke-width="5" />
+              <path d="m188 43 9-17 4 20M50 43l-9-17-4 20" fill="none" stroke="#f8d477" stroke-linecap="round" stroke-width="4" />
+            </svg>
+            <div class="animal-copy"><strong>You unlocked a tiny friend.</strong><span>This cheerful cat is celebrating your successful micro-payment.</span></div>
+          </div>
           <div class="pass-meta">
             <div class="card"><span class="label">Amount</span><span id="pass-amount" class="value"></span></div>
             <div class="card"><span class="label">Payer</span><span id="pass-payer" class="value"></span></div>
