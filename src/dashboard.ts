@@ -20,6 +20,8 @@ export function renderDashboard(): string {
       .detail { display: block; margin-top: 8px; color: #8b949e; font-size: 12px; }
       .seller-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
       .seller-actions a { font-size: 12px; }
+      .seller-card { grid-column: span 2; }
+      .seller-card .value { font-size: 16px; }
       .copy-button { border: 1px solid #484f58; border-radius: 7px; background: transparent; color: #c9d1d9; font-size: 12px; padding: 6px 9px; }
       .copy-button:hover { border-color: #79c0ff; color: #79c0ff; }
       .badge { display: inline-block; margin-left: 6px; border: 1px solid #238636; border-radius: 999px; color: #56d364; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .08em; padding: 3px 6px; vertical-align: middle; }
@@ -83,6 +85,7 @@ export function renderDashboard(): string {
       @media (max-width: 680px) {
         main { width: min(100% - 20px, 960px); padding-top: 28px; }
         .panel, .flow { padding: 16px; }
+        .seller-card { grid-column: auto; }
         .flow-actors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .flow-track { grid-template-columns: 1fr; }
         .flow-message { grid-column: auto; width: auto; }
@@ -100,7 +103,7 @@ export function renderDashboard(): string {
       <section class="grid" aria-label="Demo configuration">
         <div class="card"><span class="label">Network</span><span id="network" class="value">Loading...</span><span id="network-detail" class="detail"></span></div>
         <div class="card"><span class="label">Price</span><span id="price" class="value">Loading...</span></div>
-        <div class="card">
+        <div class="card seller-card">
           <span class="label">Demo seller wallet</span>
           <span id="seller" class="value">Loading...</span>
           <span id="seller-detail" class="detail"></span>
@@ -109,7 +112,6 @@ export function renderDashboard(): string {
             <button id="seller-copy" class="copy-button" type="button">Copy address</button>
           </div>
         </div>
-        <div class="card"><span class="label">Event store</span><span id="store" class="value">Loading...</span></div>
       </section>
 
       <section class="panel">
@@ -352,7 +354,6 @@ export function renderDashboard(): string {
         $('seller').title = config.sellerAddress;
         $('seller-detail').textContent = 'Receives ' + config.price + ' USDC per successful run';
         $('seller-link').href = 'https://sepolia.basescan.org/address/' + encodeURIComponent(config.sellerAddress);
-        $('store').textContent = config.eventStore;
         if (config.requiresDemoToken) $('token').classList.add('visible');
         if (!config.demoReady) {
           $('warning').hidden = false;
