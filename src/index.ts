@@ -153,7 +153,9 @@ app.post('/api/demo/run', async (c) => {
       networks: [config.network],
     });
 
-    const fetchWithPayment = wrapFetchWithPayment(fetch, client);
+    const workerFetch: typeof fetch = async (input, init) =>
+      app.fetch(new Request(input, init), c.env, c.executionCtx);
+    const fetchWithPayment = wrapFetchWithPayment(workerFetch, client);
     const resourceUrl = new URL('/paid-resource', c.req.url);
     const response = await fetchWithPayment(resourceUrl, {
       headers: {
